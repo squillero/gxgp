@@ -1,3 +1,7 @@
+import inspect
+from typing import Callable
+import numbers
+
 class Node:
     _func: Callable
     _children: tuple['Node']
@@ -58,13 +62,13 @@ class Node:
             return f'{self._str}(' + ', '.join(str(c) for c in self._children) + ')'
 
     @staticmethod
-    def get_nodes(node: Node):
+    def get_nodes(node: 'Node'):
         result = set()
         Node._get_nodes(result, node)
         return result
 
     @staticmethod
-    def _get_nodes(bunch: set, node: Node):
+    def _get_nodes(bunch: set, node: 'Node'):
         bunch.add(node)
         for c in node._children:
             Node._get_nodes(bunch, c)
