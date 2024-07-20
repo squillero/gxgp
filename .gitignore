@@ -1,12 +1,8 @@
-###################################|###|####################################
-#   _____                          |   |                                   #
-#  |  __ \--.--.----.-----.-----.  |===|  This file is part of Byron, an   #
-#  |  __ <  |  |   _|  _  |     |  |___|  evolutionary source-code fuzzer. #
-#  |____/ ___  |__| |_____|__|__|   ).(   Version 0.8a1 "Don Juan"         #
-#        |_____|                    \|/                                    #
-#################################### ' #####################################
-# Copyright 2023-24 Giovanni Squillero and Alberto Tonda
-# SPDX-License-Identifier: Apache-2.0
+#   *        Giovanni Squillero's GP Toolbox
+#  / \       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 2   +      A no-nonsense GP implementation in pure python
+#    / \     To be used as a wireframe when teaching EAs
+#  10   11   01URROV Computational Intelligence in PoliTO
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,17 +1,40 @@
-[tool.poetry]
-    name         = "gxgp"
-    version      = "0.1.0"
-    description  = "Giovanni's pure-python classes and utilites for implementing a Genetic Programming"
-    authors      = ["Giovanni Squillero <squillero@polito.it>"]
-    license      = "MIT"
-    readme       = "README.md"
-    package-mode = true
+#   *        Giovanni Squillero's GP Toolbox
+#  / \       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 2   +      A no-nonsense GP implementation in pure python
+#    / \     To be used as a wireframe when teaching EAs
+#  10   11   01URROV Computational Intelligence in PoliTO
 
-    [tool.poetry.dependencies]
-        python = "^3.12"
-        jupyter  = "^1.0.0"
-        icecream = "^2.1.3"
+[tool.poetry]
+name = "gxgp"
+version = "0.1.0"
+description = "A no-nonsense GP implementation in pure python"
+authors = ["Giovanni Squillero <squillero@polito.it>"]
+license = "MIT"
+readme = "README.md"
+package-mode = true
+
+[tool.poetry.dependencies]
+# gxgp is pure python! use extras & dev while developing
+# poetry install --all-extras --with dev
+python = "^3.12"
+matplotlib = { version = "^3.9.1", optional = true }
+networkx = { version = "^3.3", optional = true }
+pydot = { version = "^3.0.1", optional = true }
+
+[tool.poetry.extras]
+plot = ["matplotlib", "networkx", "pydot"]
+
+[tool.poetry.group.dev.dependencies]
+icecream = "^2.1.3"
+jupyter = "^1.0.0"
+pytest = "^8.3.1"
+
+
 
 [build-system]
-    requires      = ["poetry-core"]
-    build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+filterwarnings = ["ignore::DeprecationWarning"]
