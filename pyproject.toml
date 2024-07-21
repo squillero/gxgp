@@ -1,13 +1,13 @@
 #   *        Giovanni Squillero's GP Toolbox
 #  / \       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# 2   +      A no-nonsense GP implementation in pure python
+# 2   +      A no-nonsense GP in pure Python
 #    / \     To be used as a wireframe when teaching EAs
 #  10   11   01URROV Computational Intelligence in PoliTO
 
 [tool.poetry]
 name = "gxgp"
 version = "0.1.0"
-description = "A no-nonsense GP implementation in pure python"
+description = "A no-nonsense GP implementation in Python"
 authors = ["Giovanni Squillero <squillero@polito.it>"]
 license = "MIT"
 readme = "README.md"
@@ -20,6 +20,7 @@ python = "^3.12"
 matplotlib = { version = "^3.9.1", optional = true }
 networkx = { version = "^3.3", optional = true }
 pydot = { version = "^3.0.1", optional = true }
+tqdm = { version = "^4.66.4", optional = true }
 
 [tool.poetry.extras]
 plot = ["matplotlib", "networkx", "pydot"]
@@ -28,8 +29,6 @@ plot = ["matplotlib", "networkx", "pydot"]
 icecream = "^2.1.3"
 jupyter = "^1.0.0"
 pytest = "^8.3.1"
-
-
 
 [build-system]
 requires = ["poetry-core"]
