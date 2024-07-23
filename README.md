@@ -1,5 +1,7 @@
 # GX's Genetic Programming
 
+#### *A no-nonsense GP in pure Python*
+
 ```python
 from gxgp import Node
 
@@ -15,7 +17,7 @@ tree.draw()
 
 ```python
 tree()
-TypeError: <lambda> () missing 1 required keyword-only argument: 'x'
+TypeError: < lambda > () missing 1 required keyword-only argument: 'x'
 
 tree(x=11)
 42

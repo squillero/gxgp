@@ -4,12 +4,12 @@
 #    / \
 #  10   11   Distributed under MIT License
 
-import random
-import operator
 import math
+import operator
+import random
 from dataclasses import dataclass
 
-from gxgp import GP
+from gxgp import DagGP
 
 
 @dataclass
@@ -24,14 +24,14 @@ class TestSet:
 
 ts = TestSet()
 
-for _ in range(1000):
-    x = random.random() * 100
+for _ in range(100):
+    x = random.random() * 10
     y = math.sin(x)
     ts.X.append([x])
     ts.y.append(y)
 
-gp = GP(operators=[operator.add, operator.sub, operator.mul],
-        variables=1, constants=5, seed=42)
+gp = DagGP(operators=[operator.add, operator.sub, operator.mul],
+           variables=1, constants=5)
 
 best = None
 for _ in range(10):

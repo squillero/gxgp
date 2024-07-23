@@ -4,10 +4,17 @@
 #    / \
 #  10   11   Distributed under MIT License
 
-from icecream import install
+try:
+    from icecream import install
 
-install()
+    install()
+except ImportError:
+    pass
 
+from .draw import *
+from .gp_common import *
+from .gp_dag import *
+from .gp_tree import *
 from .node import *
-from .gp_util import *
-from .gp import *
+from .random import gxgp_random
+from .utils import *

@@ -5,25 +5,23 @@
 #  10   11   Distributed under MIT License
 
 from typing import Collection
-import random
-
-from .gp_util import arity
 
 from .node import Node
+from .random import gxgp_random
+from .utils import arity
 
-__all__ = ['GP']
+__all__ = ['DagGP']
 
 
-class GP:
-    def __init__(self, operators: Collection, variables: int | Collection, constants: int | Collection, *, seed=42):
-        self.__random = random.Random(seed)
+class DagGP:
+    def __init__(self, operators: Collection, variables: int | Collection, constants: int | Collection):
         self._operators = list(operators)
         if isinstance(variables, int):
-            self._variables = [Node(GP.default_variable(i)) for i in range(variables)]
+            self._variables = [Node(DagGP.default_variable(i)) for i in range(variables)]
         else:
             self._variables = [Node(t) for t in variables]
         if isinstance(constants, int):
-            self._constants = [Node(self.__random.random()) for i in range(constants)]
+            self._constants = [Node(gxgp_random.random()) for i in range(constants)]
         else:
             self._constants = [Node(t) for t in constants]
 
@@ -31,8 +29,8 @@ class GP:
         pool = self._variables * (1 + len(self._constants) // len(self._variables)) + self._constants
         individual = None
         while individual is None or len(individual) < n_nodes:
-            op = self.__random.choice(self._operators)
-            params = self.__random.choices(pool, k=arity(op))
+            op = gxgp_random.choice(self._operators)
+            params = gxgp_random.choices(pool, k=arity(op))
             individual = Node(op, params)
             pool.append(individual)
         return individual
@@ -46,7 +44,7 @@ class GP:
         if variable_names:
             names = variable_names
         else:
-            names = [GP.default_variable(i) for i in range(len(X[0]))]
+            names = [DagGP.default_variable(i) for i in range(len(X[0]))]
 
         y_pred = list()
         for row in X:
@@ -57,7 +55,7 @@ class GP:
     def plot_evaluate(individual: Node, X, variable_names=None):
         import matplotlib.pyplot as plt
 
-        y_pred = GP.evaluate(individual, X, variable_names)
+        y_pred = DagGP.evaluate(individual, X, variable_names)
         plt.figure()
         plt.title(individual.long_name)
         plt.scatter([x[0] for x in X], y_pred)
@@ -66,5 +64,5 @@ class GP:
 
     @staticmethod
     def mse(individual: Node, X, y, variable_names=None):
-        y_pred = GP.evaluate(individual, X, variable_names)
+        y_pred = DagGP.evaluate(individual, X, variable_names)
         return sum((a - b) ** 2 for a, b in zip(y, y_pred)) / len(y)

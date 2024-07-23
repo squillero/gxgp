@@ -4,12 +4,12 @@
 #    / \
 #  10   11   Distributed under MIT License
 
-import inspect
-from typing import Callable
-import warnings
 import numbers
+import warnings
+from typing import Callable
 
-from .gp_util import *
+from .draw import draw
+from .utils import arity
 
 __all__ = ['Node']
 
@@ -95,74 +95,19 @@ class Node:
 
     @property
     def subtree(self):
-        return Node._get_subtree_nodes(self)
+        result = set()
+        _get_subtree(result, self)
+        return result
 
     def draw(self):
         try:
-            return self._draw()
+            return draw(self)
         except Exception as msg:
             warnings.warn(f"Drawing not available ({msg})", UserWarning, 2)
             return None
 
-    def _draw(self):
-        import networkx as nx
-        from networkx.drawing.nx_pydot import graphviz_layout
 
-        G = nx.DiGraph()
-        for n1 in list(self.subtree):
-            for n2 in list(n1._successors):
-                G.add_edge(id(n1), id(n2))
-
-        pos = graphviz_layout(G, prog="dot")  # dot neato twopi circo fdp sfdp
-        # plt.figure()
-        # plt.title(self.long_name)
-
-        nx.draw_networkx_nodes(
-            G,
-            nodelist=[id(n) for n in self.subtree if not
-            n.is_leaf],
-            pos=pos,
-            node_size=800,
-            node_color='lightpink',
-            node_shape='o'  # so^>v<dph8
-        )
-        nx.draw_networkx_nodes(
-            G,
-            nodelist=[id(n) for n in self.subtree if
-                      n.is_leaf and len(inspect.getfullargspec(n._func).kwonlyargs) == 1],
-            pos=pos,
-            node_size=500,
-            node_color='lightgreen',
-            node_shape='s'  # so^>v<dph8
-        )
-        nx.draw_networkx_nodes(
-            G,
-            nodelist=[id(n) for n in self.subtree if
-                      n.is_leaf and len(inspect.getfullargspec(n._func).kwonlyargs) == 0],
-            pos=pos,
-            node_size=500,
-            node_color='lightblue',
-            node_shape='s'  # so^>v<dph8
-        )
-        nx.draw_networkx_labels(
-            G,
-            pos=pos,
-            labels={id(n): n.short_name for n in self.subtree},
-        )
-        nx.draw_networkx_edges(
-            G,
-            pos=pos,
-            node_size=800,
-        )
-
-    @staticmethod
-    def _get_subtree_nodes(node: 'Node'):
-        result = set()
-        Node._get_nodes(result, node)
-        return result
-
-    @staticmethod
-    def _get_nodes(bunch: set, node: 'Node'):
-        bunch.add(node)
-        for c in node._successors:
-            Node._get_nodes(bunch, c)
+def _get_subtree(bunch: set, node: Node):
+    bunch.add(node)
+    for c in node._successors:
+        _get_subtree(bunch, c)
