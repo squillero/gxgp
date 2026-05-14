@@ -2,7 +2,7 @@
 #  / \       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # 2   +      A no-nonsense GP in pure Python
 #    / \
-#  10   11   Distributed under MIT License
+#  10   11   SPDX-License-Identifier: 0BSD
 
 import math
 import operator

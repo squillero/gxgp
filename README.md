@@ -22,3 +22,8 @@ TypeError: < lambda > () missing 1 required keyword-only argument: 'x'
 tree(x=11)
 42
 ```
+
+### Copyright
+
+Copyright © 2024 Giovanni Squillero <<giovanni.squillero@polito.it>>  
+Released under 0BSD (see [LICENSE](./LICENSE)).
