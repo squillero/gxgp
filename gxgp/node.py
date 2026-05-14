@@ -2,7 +2,7 @@
 #  / \       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # 2   +      A no-nonsense GP in pure Python
 #    / \
-#  10   11   SPDX-License-Identifier: 0BSD
+#  10   11   Free under certain conditions
 
 import numbers
 import warnings

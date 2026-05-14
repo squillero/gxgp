@@ -25,5 +25,5 @@ tree(x=11)
 
 ### Copyright
 
-Copyright © 2024 Giovanni Squillero <<giovanni.squillero@polito.it>>  
-Released under 0BSD (see [LICENSE](./LICENSE)).
+**Copyright © [Giovanni Squillero](https://squillero.github.io/) <[giovanni.squillero@polito.it](mailto:giovanni.squillero@polito.it)**>  
+Copying and distributing these files are permitted under certain conditions, see the [license](./LICENSE) for details.
