@@ -26,4 +26,4 @@ tree(x=11)
 ### Copyright
 
 **Copyright © 2024 by [Giovanni Squillero](https://squillero.github.io/) <[giovanni.squillero@polito.it](mailto:giovanni.squillero@polito.it)**>  
-Distributed under [*Zero-Clause BSD*](https://www.tldrlegal.com/license/bsd-0-clause-license) (SPDX-License-Identifier: `0BSD`).
+Distributed under [Zero-Clause BSD](https://www.tldrlegal.com/license/bsd-0-clause-license) (SPDX-License-Identifier: `0BSD`).
