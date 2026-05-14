@@ -2,7 +2,7 @@
 #  / \       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # 2   +      A no-nonsense GP in pure Python
 #    / \
-#  10   11   Free under certain conditions
+#  10   11   SPDX-License-Identifier: 0BSD
 
 [build-system]
     requires      = ["poetry-core"]
@@ -13,7 +13,7 @@
     version      = "0.1.0"
     description  = "A no-nonsense GP implementation in Python"
     authors      = ["Giovanni Squillero <squillero@polito.it>"]
-    license      = "LICENSE"
+    license      = "0BSD"
     readme       = "README.md"
     package-mode = true
 
