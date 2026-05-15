@@ -28,4 +28,4 @@ tree(x=11)
 #### LICENSE
 
 Copyright © 2024 by Giovanni Squillero <<giovanni.squillero@polito.it>>  
-Distributed under a [BSD 0-Clause License](https://www.tldrlegal.com/license/bsd-0-clause-license).
+Distributed under a BSD 0-Clause License.
